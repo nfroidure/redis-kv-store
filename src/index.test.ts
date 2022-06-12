@@ -1,12 +1,14 @@
+import { jest } from '@jest/globals';
 import { constant, Knifecycle } from 'knifecycle';
-import initRedisKVService from '.';
+import initRedisKVService from './index.js';
 import initRedisService from 'simple-redis-service';
-import type { RedisKVService } from '.';
+import type { RedisKVService } from './index.js';
 import type { RedisConfig } from 'simple-redis-service';
+import type { LogService } from 'common-services';
 
 describe('Redis service', () => {
   let $: Knifecycle;
-  const log = jest.fn();
+  const log = jest.fn<LogService>();
 
   beforeEach(() => {
     log.mockReset();
@@ -28,9 +30,8 @@ describe('Redis service', () => {
   });
 
   it('should init well', async () => {
-    const { log, redisKV } = (await $.run(['log', 'redisKV'])) as {
+    const { redisKV } = (await $.run(['redisKV'])) as {
       redisKV: RedisKVService<unknown>;
-      log: jest.Mock;
     };
 
     expect(typeof redisKV.get).toEqual('function');
