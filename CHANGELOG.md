@@ -1,3 +1,7 @@
+# [2.0.0](https://github.com/nfroidure/redis-kv-store/compare/v1.0.0...v2.0.0) (2022-06-12)
+
+
+
 # 1.0.0 (2022-05-26)
 
 
