@@ -1,4 +1,4 @@
-import { autoService } from 'knifecycle';
+import { autoService, name } from 'knifecycle';
 import type { LogService } from 'common-services';
 import type { KVStoreService } from 'memory-kv-store';
 import type { RedisService } from 'simple-redis-service';
@@ -14,7 +14,7 @@ export type RedisKVDependencies = {
   log: LogService;
 };
 
-export default autoService(initRedisKV);
+export default name('redisKV', autoService(initRedisKV));
 
 /**
  * Instantiate the Redis Key/Value service
