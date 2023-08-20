@@ -1,3 +1,12 @@
+## [4.0.1](https://github.com/nfroidure/redis-kv-store/compare/v4.0.0...v4.0.1) (2023-08-20)
+
+
+### Bug Fixes
+
+* **knifecycle:** fix injected name ([1ee8424](https://github.com/nfroidure/redis-kv-store/commit/1ee84248923d87ed5aecf1e5cf408514c5768af6))
+
+
+
 # [4.0.0](https://github.com/nfroidure/redis-kv-store/compare/v3.0.0...v4.0.0) (2023-08-17)
 
 
