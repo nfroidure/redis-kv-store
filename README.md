@@ -8,7 +8,6 @@
 > A simple Redis based key/value store.
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nfroidure/redis-kv-store/blob/main/LICENSE)
-[![Coverage Status](https://coveralls.io/repos/github/nfroidure/redis-kv-store/badge.svg?branch=main)](https://coveralls.io/github/nfroidure/redis-kv-store?branch=main)
 
 
 [//]: # (::contents:start)
