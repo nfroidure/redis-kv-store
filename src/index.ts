@@ -1,7 +1,7 @@
-import { autoService, name } from 'knifecycle';
-import type { LogService } from 'common-services';
-import type { KVStoreService } from 'memory-kv-store';
-import type { RedisService } from 'simple-redis-service';
+import { autoService, name, location } from 'knifecycle';
+import { noop, type LogService } from 'common-services';
+import { type KVStoreService } from 'memory-kv-store';
+import { type RedisService } from 'simple-redis-service';
 
 /* Architecture Note #1: Redis Key/Value Service
 
@@ -11,10 +11,13 @@ A `redis` based key/value service.
 export type RedisKVService<T> = KVStoreService<T>;
 export type RedisKVDependencies = {
   redis: RedisService;
-  log: LogService;
+  log?: LogService;
 };
 
-export default name('redisKV', autoService(initRedisKV));
+export default location(
+  name('redisKV', autoService(initRedisKV)),
+  import.meta.url,
+);
 
 /**
  * Instantiate the Redis Key/Value service
@@ -49,7 +52,7 @@ export default name('redisKV', autoService(initRedisKV));
  */
 async function initRedisKV<T>({
   redis,
-  log,
+  log = noop,
 }: RedisKVDependencies): Promise<KVStoreService<T>> {
   log('warning', `🏧 - Redis KV Store Service initialized!`);
 
