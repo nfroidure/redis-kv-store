@@ -44,17 +44,17 @@ describe('Redis service', () => {
     expect(typeof redisKV.get).toEqual('function');
     expect(typeof redisKV.set).toEqual('function');
     expect(log.mock.calls).toMatchInlineSnapshot(`
-      [
-        [
-          "warning",
-          "🏧 - Redis Service initialized!",
-        ],
-        [
-          "warning",
-          "🏧 - Redis KV Store Service initialized!",
-        ],
-      ]
-    `);
+[
+  [
+    "warning",
+    "🏧 - Redis service initialized!",
+  ],
+  [
+    "warning",
+    "🏧 - Redis KV Store Service initialized!",
+  ],
+]
+`);
   });
 
   test('should allow to get a undefined value by its key', async () => {

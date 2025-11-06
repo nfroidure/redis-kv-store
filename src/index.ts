@@ -9,10 +9,7 @@ A `redis` based key/value service.
 */
 
 export type RedisKVService<T> = KVStoreService<T>;
-export type RedisKVDependencies = {
-  redis: RedisService;
-  log?: LogService;
-};
+export type RedisKVDependencies = { redis: RedisService; log?: LogService };
 
 export default location(
   name('redisKV', autoService(initRedisKV)),
@@ -101,7 +98,7 @@ async function initRedisKV<T>({
   return redisKV;
 }
 
-function castRedisResult<T>(result: string | null | undefined): T {
+function castRedisResult<T>(result: string | null | undefined): T | undefined {
   return result == null || result === '' ? undefined : JSON.parse(result);
 }
 
