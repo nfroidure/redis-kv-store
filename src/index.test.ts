@@ -7,10 +7,8 @@ import {
   expect,
 } from '@jest/globals';
 import { constant, Knifecycle } from 'knifecycle';
-import initRedisKVService from './index.js';
-import initRedisService from 'simple-redis-service';
-import type { RedisKVService } from './index.js';
-import type { RedisConfig } from 'simple-redis-service';
+import initRedisKVService, { type RedisKVService } from './index.js';
+import initRedisService, { type RedisConfig } from 'simple-redis-service';
 import type { LogService } from 'common-services';
 
 describe('Redis service', () => {
