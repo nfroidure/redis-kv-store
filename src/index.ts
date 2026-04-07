@@ -9,7 +9,10 @@ A `redis` based key/value service.
 */
 
 export type RedisKVService<T> = KVStoreService<T>;
-export interface RedisKVDependencies { redis: RedisService; log?: LogService };
+export interface RedisKVDependencies {
+  redis: RedisService;
+  log?: LogService;
+}
 
 export default location(
   name('redisKV', autoService(initRedisKV)),
