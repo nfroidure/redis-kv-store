@@ -1,3 +1,5 @@
+## [6.0.2](https://github.com/nfroidure/redis-kv-store/compare/v6.0.1...v6.0.2) (2026-04-17)
+
 ## [6.0.1](https://github.com/nfroidure/redis-kv-store/compare/v6.0.0...v6.0.1) (2026-04-07)
 
 # [6.0.0](https://github.com/nfroidure/redis-kv-store/compare/v5.0.1...v6.0.0) (2026-03-27)
