@@ -60,7 +60,7 @@ describe('Redis service', () => {
       redisKV: RedisKVService<number>;
     };
 
-    const value = await redisKV.get('lol');
+    const value = await redisKV.get('lollololol');
 
     expect(value).toEqual(undefined);
   });
