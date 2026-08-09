@@ -14,11 +14,6 @@ export interface RedisKVDependencies {
   log?: LogService;
 }
 
-export default location(
-  name('redisKV', autoService(initRedisKV)),
-  import.meta.url,
-);
-
 /**
  * Instantiate the Redis Key/Value service
  * @name initRedisKV
@@ -75,6 +70,31 @@ async function initRedisKV<T>({
     delete: async (key: string): Promise<void> => {
       await redis.del(key);
     },
+    getSet: async (
+      key: string,
+      value: T | undefined,
+      ttl?: number,
+    ): Promise<T | undefined> => {
+      let result: string | null;
+
+      if (typeof ttl !== 'undefined') {
+        result = await redis.set(
+          key,
+          prepareRedisValue<T>(value),
+          'PX',
+          ttl,
+          'GET',
+        );
+      } else {
+        result = await redis.set(key, prepareRedisValue<T>(value), 'GET');
+      }
+      return castRedisResult<T>(result);
+    },
+    getDelete: async (key: string): Promise<T | undefined> => {
+      const result = await redis.getdel(key);
+
+      return castRedisResult<T>(result);
+    },
     bulkGet: async (keys: string[]): Promise<(T | undefined)[]> => {
       return (await redis.mget(keys)).map((result) =>
         castRedisResult<T>(result),
@@ -108,3 +128,8 @@ function castRedisResult<T>(result: string | null | undefined): T | undefined {
 function prepareRedisValue<T>(value: T | undefined): string {
   return value == null ? '' : JSON.stringify(value);
 }
+
+export default location(
+  name('redisKV', autoService(initRedisKV)),
+  import.meta.url,
+);
