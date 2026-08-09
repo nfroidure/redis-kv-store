@@ -1,3 +1,9 @@
+## [6.1.0](https://github.com/nfroidure/redis-kv-store/compare/v6.0.2...v6.1.0) (2026-08-09)
+
+### Features
+
+* add getSet and getDelete ([65b8eac](https://github.com/nfroidure/redis-kv-store/commit/65b8eac6624476fec7773aab542e7096930b5140))
+
 ## [6.0.2](https://github.com/nfroidure/redis-kv-store/compare/v6.0.1...v6.0.2) (2026-04-17)
 
 ## [6.0.1](https://github.com/nfroidure/redis-kv-store/compare/v6.0.0...v6.0.1) (2026-04-07)
