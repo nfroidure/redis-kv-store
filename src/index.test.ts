@@ -9,7 +9,7 @@ import {
 import { constant, Knifecycle } from 'knifecycle';
 import initRedisKVService, { type RedisKVService } from './index.js';
 import initRedisService, { type RedisConfig } from 'simple-redis-service';
-import type { LogService } from 'common-services';
+import { type LogService } from 'common-services';
 
 describe('Redis service', () => {
   let $: Knifecycle;
@@ -72,6 +72,18 @@ describe('Redis service', () => {
         const { redisKV } = (await $.run(['redisKV'])) as {
           redisKV: RedisKVService<typeof value>;
         };
+
+        await redisKV.delete('lol');
+
+        expect(await redisKV.getDelete('lol')).toBeUndefined();
+
+        expect(await redisKV.getSet('lol', 'test')).toBeUndefined();
+
+        expect(await redisKV.getSet('lol', 'test2')).toEqual('test');
+
+        expect(await redisKV.getDelete('lol')).toEqual('test2');
+
+        expect(await redisKV.get('lol')).toBeUndefined();
 
         await redisKV.set('lol', value);
 
